@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Cybersecurity and Digital Safety Mini App - Password strength, phishing checker, quiz, safety tips.">
+    <title>Cybersecurity & Digital Safety</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="container">
+            <h1>Cybersecurity & Digital Safety</h1>
+            <nav aria-label="Primary" class="nav">
+                <button class="nav__link" data-target="#password-tools">Passwords</button>
+                <button class="nav__link" data-target="#phishing-checker">Phishing</button>
+                <button class="nav__link" data-target="#quiz">Quiz</button>
+                <button class="nav__link" data-target="#tips">Tips</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="app" tabindex="-1">
+        <section id="password-tools" class="card" aria-labelledby="password-tools-title">
+            <h2 id="password-tools-title">Password Strength & Generator</h2>
+            <label for="password-input" class="label">Enter a password to check strength</label>
+            <div class="input-row">
+                <input id="password-input" type="password" inputmode="text" autocomplete="new-password" placeholder="Type a password..." aria-describedby="strength-text">
+                <button id="toggle-visibility" aria-label="Show or hide password">Show</button>
+            </div>
+            <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-live="polite">
+                <div class="meter__bar" id="strength-bar"></div>
+            </div>
+            <p id="strength-text" class="muted">Strength: N/A</p>
+
+            <div class="generator">
+                <h3>Generate a secure password</h3>
+                <div class="generator__controls">
+                    <label><input type="checkbox" id="gen-lower" checked> a-z</label>
+                    <label><input type="checkbox" id="gen-upper" checked> A-Z</label>
+                    <label><input type="checkbox" id="gen-digit" checked> 0-9</label>
+                    <label><input type="checkbox" id="gen-symbol" checked> Symbols</label>
+                    <label>Length <input type="number" id="gen-length" min="8" max="64" value="16"></label>
+                </div>
+                <div class="input-row">
+                    <input id="generated-password" type="text" readonly placeholder="Your secure password">
+                    <button id="generate-btn">Generate</button>
+                    <button id="copy-btn">Copy</button>
+                </div>
+                <p class="muted">Tip: Use a unique password per site with a password manager.</p>
+            </div>
+        </section>
+
+        <section id="phishing-checker" class="card" aria-labelledby="phishing-title">
+            <h2 id="phishing-title">Phishing Link Checker</h2>
+            <label for="url-input" class="label">Paste a URL to analyze</label>
+            <div class="input-row">
+                <input id="url-input" type="url" inputmode="url" placeholder="https://example.com/..." spellcheck="false">
+                <button id="analyze-url">Analyze</button>
+            </div>
+            <div id="url-result" class="result" aria-live="polite"></div>
+            <details class="muted">
+                <summary>What we check</summary>
+                <ul>
+                    <li>Uses HTTPS</li>
+                    <li>Suspicious domain patterns (typosquatting, excessive subdomains)</li>
+                    <li>IP-address URLs</li>
+                    <li>Known shorteners or tracking params</li>
+                </ul>
+            </details>
+        </section>
+
+        <section id="quiz" class="card" aria-labelledby="quiz-title">
+            <h2 id="quiz-title">Cyber Safety Quiz</h2>
+            <div id="quiz-container"></div>
+            <div class="quiz__actions">
+                <button id="submit-quiz">Submit</button>
+                <button id="reset-quiz">Reset</button>
+            </div>
+            <div id="quiz-result" class="result" aria-live="polite"></div>
+        </section>
+
+        <section id="tips" class="card" aria-labelledby="tips-title">
+            <h2 id="tips-title">Everyday Safety Tips</h2>
+            <ul class="tips">
+                <li><strong>Update devices</strong> regularly to patch vulnerabilities.</li>
+                <li><strong>Enable 2FA</strong> wherever possible.</li>
+                <li><strong>Beware of links</strong> in unsolicited messages.</li>
+                <li><strong>Use unique passwords</strong> and a reputable password manager.</li>
+                <li><strong>Back up data</strong> to offline or cloud storage.</li>
+                <li><strong>Lock your screen</strong> when away.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Built for Hackathon: Cybersecurity & Digital Safety</p>
+        </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+</body>
+<!--
+    Accessibility notes:
+    - Buttons are keyboard accessible; main has tabindex for quick skip.
+    - Progressbar has aria-valuenow updated dynamically.
+-->
+</html>
+
+
