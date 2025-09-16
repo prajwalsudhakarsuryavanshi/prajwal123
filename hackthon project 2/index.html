@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Automation & IoT — AI for Humans, Cities, Industry</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header class="app-header">
+        <h1>Smart Automation & IoT</h1>
+        <p>AI in Automation for Humans, Cities, and Industry</p>
+    </header>
+
+    <main class="container">
+        <section class="panel grid-2">
+            <div class="card" id="humans-section">
+                <h2>Humans — Smart Home</h2>
+                <div class="devices">
+                    <div class="device">
+                        <h3>Living Room Light</h3>
+                        <button class="toggle" data-device="home.light">Off</button>
+                    </div>
+                    <div class="device">
+                        <h3>Thermostat (<span id="home-temp">22</span>°C)</h3>
+                        <input type="range" min="16" max="30" value="22" id="thermostat-slider" />
+                    </div>
+                    <div class="device">
+                        <h3>Door Lock</h3>
+                        <button class="toggle" data-device="home.lock">Locked</button>
+                    </div>
+                </div>
+                <canvas id="home-energy-chart" width="400" height="160" aria-label="Home Energy Usage"></canvas>
+            </div>
+
+            <div class="card" id="cities-section">
+                <h2>Cities — Smart City</h2>
+                <div class="devices">
+                    <div class="device">
+                        <h3>Traffic Lights</h3>
+                        <button class="toggle" data-device="city.traffic.auto">Auto</button>
+                    </div>
+                    <div class="device">
+                        <h3>Air Quality (PM2.5): <span id="city-aqi">22</span></h3>
+                        <button class="action" id="refresh-aqi">Refresh</button>
+                    </div>
+                    <div class="device">
+                        <h3>Street Lights</h3>
+                        <button class="toggle" data-device="city.lights">Off</button>
+                    </div>
+                </div>
+                <canvas id="city-traffic-chart" width="400" height="160" aria-label="Traffic Flow"></canvas>
+            </div>
+        </section>
+
+        <section class="panel grid-2">
+            <div class="card" id="industry-section">
+                <h2>Industry — Smart Factory</h2>
+                <div class="devices">
+                    <div class="device">
+                        <h3>Conveyor</h3>
+                        <button class="toggle" data-device="factory.conveyor">Stopped</button>
+                    </div>
+                    <div class="device">
+                        <h3>Robot Arm</h3>
+                        <button class="toggle" data-device="factory.robot">Idle</button>
+                    </div>
+                    <div class="device">
+                        <h3>Temperature: <span id="factory-temp">42</span>°C</h3>
+                        <button class="action" id="cooling-boost">Cooling Boost</button>
+                    </div>
+                </div>
+                <canvas id="factory-output-chart" width="400" height="160" aria-label="Factory Output"></canvas>
+            </div>
+
+            <div class="card console-card">
+                <h2>Command Console</h2>
+                <div class="console-output" id="console-output" aria-live="polite"></div>
+                <div class="console-input">
+                    <input id="console-input" type="text" placeholder="Type commands e.g., set home.light on" autocomplete="off" />
+                    <button id="console-send">Run</button>
+                </div>
+                <details>
+                    <summary>Help</summary>
+                    <ul>
+                        <li><code>set home.light on|off</code></li>
+                        <li><code>set home.lock lock|unlock</code></li>
+                        <li><code>set city.lights on|off</code></li>
+                        <li><code>mode city.traffic auto|manual</code></li>
+                        <li><code>set factory.conveyor start|stop</code></li>
+                        <li><code>set factory.robot start|stop</code></li>
+                        <li><code>thermostat 18-30</code></li>
+                        <li><code>status</code></li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <small>Demo only — No real devices connected.</small>
+    </footer>
+
+    <script src="app.js"></script>
+    
+</body>
+</html>
+
+
+
